@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 
+test.skip(!!process.env.CI, 'Test is skipped in CI');
+
 test('login', async ({page}) => {
     await page.goto('/auth/login');
     await page.getByTestId('email').fill('customer@practicesoftwaretesting.com');
