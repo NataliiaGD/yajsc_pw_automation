@@ -8,6 +8,6 @@ export class AccountPage {
   constructor(page: Page) {
     this.page = page;
     this.title = this.page.getByTestId('page-title');
-    this.header = this.header = new Header(this.page);
+    this.header = new Header(this.page);
   }
 }

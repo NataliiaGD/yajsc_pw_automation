@@ -16,7 +16,7 @@ export class HomePage {
     this.addToFavorites = this.page.getByTestId('add-to-favorites');
   }
 
-    getProductByName(name: string):Locator{
+    getProductByName(name: string): Locator {
     return this.page.getByRole('heading', { name });
   }
 }
