@@ -1,12 +1,12 @@
 import { Locator, Page } from "@playwright/test";
+import { Header } from "../fragments/header.fragment";
 export class AccountPage {
-    page: Page;
-    title: Locator;
+  page: Page;
+  title: Locator;
+  header: Header;
 
-    constructor(page: Page){
-        this.page = page;
-        this.title = this.page.getByTestId('page-title');
-    }
-
-
+  constructor(page: Page) {
+    this.page = page;
+    this.title = this.page.getByTestId("page-title");
+  }
 }
