@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class Header {
   page: Page;
@@ -6,6 +6,6 @@ export class Header {
 
   constructor(page: Page) {
     this.page = page;
-    this.menu = this.page.getByTestId("nav-menu");
+    this.menu = this.page.getByTestId('nav-menu');
   }
 }

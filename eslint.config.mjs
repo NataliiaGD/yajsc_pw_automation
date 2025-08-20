@@ -1,6 +1,6 @@
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import playwright from "eslint-plugin-playwright";
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import playwright from 'eslint-plugin-playwright';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -9,7 +9,7 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["eslint.config.mjs"],
+          allowDefaultProject: ['eslint.config.mjs'],
         },
         tsconfigRootDir: import.meta.dirname,
       },
@@ -17,14 +17,15 @@ export default tseslint.config(
   },
   {
     rules: {
-      "@typescript-eslint/no-floating-promises": "error",
+      '@typescript-eslint/no-floating-promises': 'error',
+      quotes: ['error', 'single'],
     },
   },
   {
-    ...playwright.configs["flat/recommended"],
-    files: ["tests/**"],
+    ...playwright.configs['flat/recommended'],
+    files: ['tests/**'],
     rules: {
-      ...playwright.configs["flat/recommended"].rules,
+      ...playwright.configs['flat/recommended'].rules,
       // Customize Playwright rules
       // ...
     },

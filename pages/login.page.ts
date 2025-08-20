@@ -1,18 +1,16 @@
-import { Locator, Page } from "@playwright/test";
-import { Header } from "../fragments/header.fragment";
+import { Locator, Page } from '@playwright/test';
 
 export class LoginPage {
   page: Page;
   email: Locator;
   password: Locator;
   loginButton: Locator;
-  header: Header;
 
   constructor(page: Page) {
     this.page = page;
-    this.email = this.page.getByTestId("email");
-    this.password = this.page.getByTestId("password");
-    this.loginButton = this.page.getByTestId("login-submit");
+    this.email = this.page.getByTestId('email');
+    this.password = this.page.getByTestId('password');
+    this.loginButton = this.page.getByTestId('login-submit');
   }
 
   async login(email: string, password: string): Promise<void> {
