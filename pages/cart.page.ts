@@ -1,0 +1,15 @@
+import { Locator, Page } from '@playwright/test';
+
+export class CartPage {
+  page: Page;
+  productQuantity: Locator;
+  itemTitle: Locator;
+  proceedToCheckout: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.productQuantity = page.getByTestId('product-quantity');
+    this.itemTitle = page.getByTestId('product-title');
+    this.proceedToCheckout = page.getByTestId('proceed-1');
+  }
+}
