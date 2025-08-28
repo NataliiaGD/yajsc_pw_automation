@@ -19,7 +19,7 @@ export class HomePage {
 
   async sortByLabel(label: string): Promise<void> {
     await this.sortDropdown.selectOption({ label });
-    await this.page.waitForTimeout(300);
+    await this.page.waitForLoadState('networkidle');
   }
 
   async getAllProductNames(): Promise<string[]> {
@@ -36,7 +36,7 @@ export class HomePage {
 
   async sortByPrice(label: string): Promise<void> {
     await this.sortDropdown.selectOption({ label });
-    await this.page.waitForTimeout(300);
+    await this.page.waitForLoadState('networkidle');
   }
 
   async getAllPrices(): Promise<string[]> {
@@ -53,6 +53,6 @@ export class HomePage {
 
   async checkCategoryCheckbox(name: string) {
     await this.page.getByRole('checkbox', { name: `${name}` }).check();
-    await this.page.waitForTimeout(300);
+    await this.page.waitForLoadState('networkidle');
   }
 }
