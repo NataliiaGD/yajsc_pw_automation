@@ -11,7 +11,7 @@ test.describe('Verify products', () => {
     const productPage = new ProductPage(page);
     await homePage.getProductByName('Combination Pliers').click();
     await expect(homePage.productTitle).toHaveText('Combination Pliers');
-    await expect(homePage.productPrice).toHaveText('14.15');
+    await expect(productPage.productPrice).toHaveText('14.15');
     await expect(productPage.addToCartButton).toBeVisible();
     await expect(productPage.addToFavorites).toBeVisible();
   });
@@ -24,7 +24,7 @@ test.describe('Verify products', () => {
     await homePage.getProductByName(' Slip Joint Pliers ').click();
     await expect(page).toHaveURL(/.*product.*/);
     await expect(homePage.productTitle).toHaveText('Slip Joint Pliers');
-    await expect(homePage.productPrice).toHaveText('9.17');
+    await expect(productPage.productPrice).toHaveText('9.17');
     await productPage.addToCartButton.click();
     await expect(productPage.checkAlert()).toBeVisible();
     await expect(productPage.checkAlert()).toHaveText(' Product added to shopping cart. ');
@@ -47,7 +47,6 @@ test.describe('Verify products', () => {
       const homePage = new HomePage(page);
       await page.goto('/');
       await homePage.sortByLabel(label);
-      //await page.waitForTimeout(500);
       const productNames = await homePage.getAllProductNames();
       const expectedNames = await homePage.expectedProductsSorted(order);
       expect(productNames).toEqual(expectedNames);
@@ -55,8 +54,8 @@ test.describe('Verify products', () => {
   }
 
   const sortingPriceOptions: { label: string; order: 'asc' | 'desc' }[] = [
-    { label: 'Price (High - Low)', order: 'asc' },
-    { label: 'Price (Low - High)', order: 'desc' },
+    { label: 'Price (Low - High)', order: 'asc' },
+    { label: 'Price (High - Low)', order: 'desc' },
   ];
 
   for (const { label, order } of sortingPriceOptions) {

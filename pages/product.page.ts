@@ -6,6 +6,7 @@ export class ProductPage {
   addToFavorites: Locator;
   cart: Locator;
   cartQuantityLabel: Locator;
+  productPrice: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,9 +14,10 @@ export class ProductPage {
     this.addToFavorites = this.page.getByTestId('add-to-favorites');
     this.cart = this.page.getByTestId('nav-cart');
     this.cartQuantityLabel = this.page.getByTestId('cart-quantity');
+    this.productPrice = this.page.getByTestId('unit-price');
   }
 
   checkAlert(): Locator {
-    return this.page.getByRole('alert', {});
+    return this.page.getByRole('alert');
   }
 }

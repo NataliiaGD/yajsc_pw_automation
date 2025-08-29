@@ -9,7 +9,7 @@ export class HomePage {
   constructor(page: Page) {
     this.page = page;
     this.productTitle = this.page.getByTestId('product-name');
-    this.productPrice = this.page.getByTestId('unit-price');
+    this.productPrice = this.page.getByTestId('product-price');
     this.sortDropdown = this.page.getByTestId('sort');
   }
 
@@ -17,38 +17,46 @@ export class HomePage {
     return this.page.getByRole('heading', { name });
   }
 
-  async sortByLabel(label: string): Promise<void> {
+  private async sortByOption(label: string): Promise<void> {
     await this.sortDropdown.selectOption({ label });
     await this.page.waitForLoadState('networkidle');
   }
 
+  async sortByLabel(label: string): Promise<void> {
+    return this.sortByOption(label);
+  }
+
+  private async getAttributes(locator: Locator): Promise<string[]> {
+    return await locator.allTextContents();
+  }
+
   async getAllProductNames(): Promise<string[]> {
-    const products = await this.productTitle.allTextContents();
+    const products = await this.getAttributes(this.productTitle);
     return products;
+  }
+
+  private sortValues(values: string[], order: 'asc' | 'desc'): string[] {
+    return [...values]
+    .sort((a, b) => (order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)));
   }
 
   async expectedProductsSorted(order: 'asc' | 'desc') {
     const productNames = await this.getAllProductNames();
-    return [...productNames].sort((a, b) =>
-      order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)
-    );
+    return this.sortValues(productNames, order);
   }
 
   async sortByPrice(label: string): Promise<void> {
-    await this.sortDropdown.selectOption({ label });
-    await this.page.waitForLoadState('networkidle');
+    return this.sortByOption(label);
   }
 
   async getAllPrices(): Promise<string[]> {
-    const prices = await this.productPrice.allTextContents();
+    const prices = await this.getAttributes(this.productPrice);
     return prices;
   }
 
   async expectedPricesSorted(order: 'asc' | 'desc') {
     const productPrices = await this.getAllPrices();
-    return [...productPrices].sort((a, b) =>
-      order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)
-    );
+    return this.sortValues(productPrices, order);
   }
 
   async checkCategoryCheckbox(name: string) {
