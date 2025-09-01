@@ -22,8 +22,16 @@
     "@playwright/test": "^1.54.2",
     "@types/node": "^24.2.1",
     "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-playwright": "^2.2.2",
+    "eslint-plugin-prettier": "^5.5.4",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.39.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "es5",
+    "printWidth": 100
   }
 }

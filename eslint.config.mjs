@@ -29,5 +29,5 @@ export default tseslint.config(
       // Customize Playwright rules
       // ...
     },
-  },
+  }
 );
