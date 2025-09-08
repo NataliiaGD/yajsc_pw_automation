@@ -13,6 +13,11 @@ export class HomePage {
     this.sortDropdown = this.page.getByTestId('sort');
   }
 
+  async openHomePage() {
+    await this.page.waitForTimeout(3000);
+    await this.page.goto('/');
+  }
+
   getProductByName(name: string): Locator {
     return this.page.getByRole('heading', { name });
   }
@@ -36,8 +41,7 @@ export class HomePage {
   }
 
   private sortValues(values: string[], order: 'asc' | 'desc'): string[] {
-    return [...values]
-    .sort((a, b) => (order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)));
+    return [...values].sort((a, b) => (order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)));
   }
 
   async expectedProductsSorted(order: 'asc' | 'desc') {
