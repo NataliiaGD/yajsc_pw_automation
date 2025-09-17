@@ -14,7 +14,7 @@ export class HomePage {
   }
 
   async openHomePage() {
-    await this.page.waitForLoadState('networkidle'); 
+    await this.page.waitForLoadState('networkidle');
     await this.page.goto('/');
   }
 
