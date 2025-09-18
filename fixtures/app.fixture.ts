@@ -1,5 +1,6 @@
 import { AppPage } from '../pages/app.page';
 import { test as base, expect } from '@playwright/test';
+import { USER_LOGIN } from '../utils/credentials';
 export { expect } from '@playwright/test';
 
 type Fixtures = {
@@ -16,8 +17,8 @@ export const test = base.extend<Fixtures>({
   loggedInApp: async ({ page, request }, use) => {
     const response = await request.post('https://api.practicesoftwaretesting.com/users/login', {
       data: {
-        email: 'customer@practicesoftwaretesting.com',
-        password: 'welcome01',
+        email: USER_LOGIN.email,
+        password: USER_LOGIN.password,
       },
     });
 
