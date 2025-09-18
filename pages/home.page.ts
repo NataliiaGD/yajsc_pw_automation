@@ -14,8 +14,7 @@ export class HomePage {
   }
 
   async openHomePage() {
-    await this.page.waitForLoadState('networkidle'); 
-    await this.page.goto('/');
+    await this.page.goto('/', { waitUntil: 'load' });
   }
 
   getProductByName(name: string): Locator {
